@@ -3,6 +3,8 @@
 package lesson2.task1
 
 import lesson1.task1.discriminant
+import lesson1.task1.sqr
+import kotlin.math.cos
 import kotlin.math.max
 import kotlin.math.sqrt
 
@@ -63,7 +65,23 @@ fun minBiRoot(a: Double, b: Double, c: Double): Double {
  * Мой возраст. Для заданного 0 < n < 200, рассматриваемого как возраст человека,
  * вернуть строку вида: «21 год», «32 года», «12 лет».
  */
-fun ageDescription(age: Int): String = TODO()
+fun ageDescription(age: Int): String {
+    if (age in 11..19 || (age in 101..119)) {
+        return "$age лет"
+    }
+    return when {
+        age % 10 == 1 -> {
+            "$age год"
+        }
+        age % 10 < 5 -> {
+            "$age года"
+        }
+        else -> {
+            "$age лет"
+        }
+    }
+
+}
 
 /**
  * Простая
@@ -91,7 +109,23 @@ fun whichRookThreatens(
     kingX: Int, kingY: Int,
     rookX1: Int, rookY1: Int,
     rookX2: Int, rookY2: Int
-): Int = TODO()
+): Int {
+    return when {
+        (kingX == rookX1 && kingX == rookX2) || (kingX == rookX1 && kingY == rookY2) || (kingX == rookX2 && kingY == rookY1) || (kingY == rookY1 && kingY == rookY2) -> {
+            3
+        }
+        kingX == rookX1 || kingY == rookY1 -> {
+            1
+        }
+        kingX == rookX2 || kingY == rookY2 -> {
+            2
+        }
+        else -> {
+            0
+        }
+
+    }
+}
 
 /**
  * Простая
